@@ -1,0 +1,13 @@
+<h1>All Authors</h1>
+<form action="/authors" method="GET">
+    <label>Author Name</label>
+    <input type="text" name="name" value="<%= author.name %>">
+    <a href="/authors">Cancel</a>
+    <button type="submit">Search</button> 
+</form>
+<% authors.forEach( author => { %>
+    <div><%= author.name %></div>
+    <a href="/authors/<%= author.id %>">View</a>
+    <a href="/authors/<%= author.id %>/edit">Edit</a>
+    <%- include('../partials/deleteForm.ejs', { url: `/authors/${author.id}` }) %>
+<% }) %>
